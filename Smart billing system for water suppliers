@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Customer {
+private:
+    string name;
+    int customerId;
+    double waterConsumed;
+    double billAmount;
+
+public:
+    Customer(string name, int customerId) {
+        this->name = name;
+        this->customerId = customerId;
+        waterConsumed = 0.0;
+        billAmount = 0.0;
+    }
+
+    void recordWaterConsumption(double consumption) {
+        waterConsumed += consumption;
+    }
+
+    void calculateBill() {
+        // Implement your billing logic here, based on water consumption and rates.
+        // For example:
+        // double rate = 0.01; // $0.01 per gallon
+        // billAmount = waterConsumed * rate;
+    }
+
+    void displayBill() {
+        cout << "Customer Name: " << name << endl;
+        cout << "Customer ID: " << customerId << endl;
+        cout << "Water Consumed: " << waterConsumed << " gallons" << endl;
+        cout << "Bill Amount: $" << billAmount << endl;
+    }
+};
+
+int main() {
+    string name;
+    int customerId;
+    double consumption;
+
+    cout << "Enter customer name: ";
+    cin >> name;
+
+    cout << "Enter customer ID: ";
+    cin >> customerId;
+
+    Customer customer(name, customerId);
+
+    cout << "Enter water consumption in gallons: ";
+    cin >> consumption;
+    customer.recordWaterConsumption(consumption);
+
+    customer.calculateBill();
+    customer.displayBill();
+
+    return 0;
+}
